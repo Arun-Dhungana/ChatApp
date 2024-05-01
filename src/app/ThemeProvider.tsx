@@ -1,5 +1,4 @@
 "use client";
-
 import { isServer } from "@/utils/utils";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
@@ -16,7 +15,7 @@ export default function ThemeProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [theme, setTheme] = useState<Theme>((): Theme => {
+  const [theme, setTheme] = useState<Theme>(() => {
     if (isServer()) return "light";
     return (localStorage.getItem("theme") as Theme) || "light";
   });

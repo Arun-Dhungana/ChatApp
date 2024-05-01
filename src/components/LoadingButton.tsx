@@ -10,7 +10,7 @@ export default function LoadingButton({
   ...props
 }: LoadingButtonProps) {
   return (
-    <Button {...props} disabled={loading}>
+    <Button {...props} disabled={loading} value="Load more..">
       {loading ? <LoadingIndicator></LoadingIndicator> : props.children}
     </Button>
   );

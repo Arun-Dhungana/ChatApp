@@ -1,8 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
-import { BellIcon, BellOff, BellRing, Moon, Sun, Users } from "lucide-react";
+import { Moon, Sun, Users } from "lucide-react";
 import { dark } from "@clerk/themes";
 import { useTheme } from "../ThemeProvider";
-import { useEffect, useState } from "react";
 
 interface MenuProps {
   onUserMenuClick: () => void;

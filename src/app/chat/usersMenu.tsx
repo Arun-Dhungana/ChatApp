@@ -112,10 +112,11 @@ export default function UserMenu({
   }
 
   //one-on-one Chat
-  async function startChatWithUser(userId: string) {
+  async function startChatWithUser(userId: string, name?: string) {
     try {
       const channel = client.channel("messaging", {
         members: [userId, loggedInUser.id],
+        name: name,
       });
       await channel.create();
       handleChannelSelected(channel);
@@ -126,7 +127,10 @@ export default function UserMenu({
   return (
     <div className="str-chat absolute z-10 h-full w-full overflow-y-auto border-e border-e-[#DBDDE1] bg-white dark:border-e-gray-800 dark:bg-[#17191c]">
       <div className="flex flex-col p-3">
-        <span className="flex cursor-pointer flex-row pe-1" onClick={onClose}>
+        <span
+          className="mb-2 flex cursor-pointer flex-row pe-1"
+          onClick={onClose}
+        >
           <ArrowLeft></ArrowLeft>User
         </span>
         <input
@@ -171,8 +175,10 @@ export default function UserMenu({
           <LoadingButton
             onClick={loadmoreUsers}
             loading={moreUserLoading}
-            className="mb-3 w-[80%]"
-          ></LoadingButton>
+            className=" mb-3 w-full bg-blue-600 text-black dark:bg-gray-700 dark:text-white"
+          >
+            Load more..
+          </LoadingButton>
         )}
       </div>
     </div>
@@ -180,7 +186,7 @@ export default function UserMenu({
 }
 interface UserResultsProps {
   user: UserResponse & { image?: string };
-  onUserClicked: (userId: string) => void;
+  onUserClicked: (userId: string, name: string | undefined) => void;
   selected?: boolean;
   onChangeSelected: (selected: boolean) => void;
 }
@@ -193,7 +199,7 @@ function UserResult({
   return (
     <button
       className="mb-3 flex w-full items-center gap-2 p-2 hover:bg-[#e9eaed] dark:hover:bg-[#1c1e22]"
-      onClick={() => onUserClicked(user.id)}
+      onClick={() => onUserClicked(user.id, user.name)}
     >
       <input
         type="checkbox"

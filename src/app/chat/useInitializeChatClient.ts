@@ -1,7 +1,7 @@
 import { env } from "@/env";
 import { useUser } from "@clerk/nextjs";
-import { error } from "console";
-import React, { useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
 import { StreamChat } from "stream-chat";
 
 export default function useInitializeChatClient() {
@@ -36,6 +36,6 @@ export default function useInitializeChatClient() {
         .then(() => console.log("Connnection closed"))
         .catch((error) => console.error("Failed to disconnectUser"));
     };
-  }, [user?.id, user?.fullName, user?.imageUrl]);
+  }, [user?.id]);
   return chatClient;
 }
