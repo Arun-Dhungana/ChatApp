@@ -38,15 +38,15 @@ export default function Page() {
 
   if (!chatClient || !user) {
     return (
-      <div className="flex h-screen items-center justify-center bg-gray-400 dark:bg-black">
+      <div className="flex h-screen w-screen items-center justify-center bg-gray-400 dark:bg-black">
         <LoadingIndicator size={40} />
       </div>
     );
   }
 
   return (
-    <div className="h-screen bg-gray-400  text-black dark:text-white xl:px-20 xl:py-8">
-      <div className="mx-auto flex h-full min-w-[350px] max-w-[1600px] flex-col shadow-sm">
+    <div className=" bg-gray-400  text-black dark:text-white xl:px-20 xl:py-8">
+      <div className="mx-auto flex h-screen w-full min-w-[350px] max-w-[1600px] flex-col shadow-sm">
         <Chat
           client={chatClient}
           i18nInstance={isInstance}
@@ -54,7 +54,7 @@ export default function Page() {
             theme === "dark" ? "str-chat__theme-dark" : "str-chat__theme-light"
           }
         >
-          <div className="flex h-full  flex-col md:flex-row">
+          <div className="flex     flex-col md:flex-row">
             <div className=" flex justify-center border-b border-b-[#DBDDE1] p-3 dark:bg-black dark:text-white md:hidden">
               <button type="button" onClick={() => setIt(!chatSideBarOpen)}>
                 {!chatSideBarOpen ? (
@@ -74,17 +74,18 @@ export default function Page() {
             ></ChatSideBar>
 
             <div
-              className={` sm:h-auto sm:w-auto md:h-full md:w-full ${!chatSideBarOpen || isLargeScreen ? "block" : "hidden"}`}
+              className={`${!chatSideBarOpen || isLargeScreen ? "block" : "hidden"}`}
             >
               <Channel>
                 <Window hideOnThread={!isLargeScreen}>
                   <ChannelHeader />
 
                   <MessageList />
-                  <div className="sticky bottom-0">
+                  <div className="  sticky bottom-0">
                     <MessageInput />
                   </div>
                 </Window>
+
                 <Thread />
               </Channel>
             </div>
