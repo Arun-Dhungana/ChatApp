@@ -112,11 +112,10 @@ export default function UserMenu({
   }
 
   //one-on-one Chat
-  async function startChatWithUser(userId: string, name?: string) {
+  async function startChatWithUser(userId: string) {
     try {
       const channel = client.channel("messaging", {
         members: [userId, loggedInUser.id],
-        name: name,
       });
       await channel.create();
       handleChannelSelected(channel);
@@ -186,7 +185,7 @@ export default function UserMenu({
 }
 interface UserResultsProps {
   user: UserResponse & { image?: string };
-  onUserClicked: (userId: string, name: string | undefined) => void;
+  onUserClicked: (userId: string) => void;
   selected?: boolean;
   onChangeSelected: (selected: boolean) => void;
 }
@@ -199,7 +198,7 @@ function UserResult({
   return (
     <button
       className="mb-3 flex w-full items-center gap-2 p-2 hover:bg-[#e9eaed] dark:hover:bg-[#1c1e22]"
-      onClick={() => onUserClicked(user.id, user.name)}
+      onClick={() => onUserClicked(user.id)}
     >
       <input
         type="checkbox"

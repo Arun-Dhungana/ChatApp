@@ -31,7 +31,7 @@ export default function ChatSideBar({ user, show, onClose }: ChatSideBarProps) {
   );
   return (
     <div
-      className={`relative w-full flex-col md:max-w-[360px] ${show ? "flex" : "hidden"}`}
+      className={`relative h-full w-full flex-col md:max-w-[360px] ${show ? "flex" : "hidden"}`}
     >
       {userMenu && (
         <UserMenu
