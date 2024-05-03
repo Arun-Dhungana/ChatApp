@@ -8,10 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "ChatApp",
   description: "Live chat made using streak and clerk.",
-  metadataBase: new URL("/https://chatapp-five-black.vercel.app/"),
+
   openGraph: {
     images: {
-      url: "https://chatapp-five-black.vercel.app/opengraph-image.jpg",
+      url: "/opengraph-image.jpg",
     },
   },
 };
