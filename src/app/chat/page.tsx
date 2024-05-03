@@ -45,53 +45,52 @@ export default function Page() {
   }
 
   return (
-    <div className=" bg-gray-400  text-black dark:text-white xl:px-20 xl:py-8">
-      <div className="mx-auto flex h-screen w-full min-w-[350px] max-w-[1600px] flex-col shadow-sm">
-        <Chat
-          client={chatClient}
-          i18nInstance={isInstance}
-          theme={
-            theme === "dark" ? "str-chat__theme-dark" : "str-chat__theme-light"
-          }
-        >
-          <div className="flex     flex-col md:flex-row">
-            <div className=" flex justify-center border-b border-b-[#DBDDE1] p-3 dark:bg-black dark:text-white md:hidden">
-              <button type="button" onClick={() => setIt(!chatSideBarOpen)}>
-                {!chatSideBarOpen ? (
-                  <span className=" flex items-center gap-1 ">
-                    <Menu />
-                    Menu
-                  </span>
-                ) : (
-                  <X />
-                )}
-              </button>
-            </div>
-            <ChatSideBar
-              user={user}
-              show={isLargeScreen || chatSideBarOpen}
-              onClose={handleSideBarOnClose}
-            ></ChatSideBar>
-
-            <div
-              className={`${!chatSideBarOpen || isLargeScreen ? "block" : "hidden"}`}
-            >
-              <Channel>
-                <Window hideOnThread={!isLargeScreen}>
-                  <ChannelHeader />
-
-                  <MessageList />
-                  <div className="  sticky bottom-0">
-                    <MessageInput />
-                  </div>
-                </Window>
-
-                <Thread />
-              </Channel>
-            </div>
+    <div className=" mx-auto  flex h-screen w-screen min-w-[350px] max-w-[1600px] flex-col bg-gray-400 text-black shadow-sm dark:text-white xl:px-20 xl:py-8">
+      <Chat
+        client={chatClient}
+        i18nInstance={isInstance}
+        theme={
+          theme === "dark" ? "str-chat__theme-dark" : "str-chat__theme-light"
+        }
+      >
+        <div className="flex h-full    flex-col md:flex-row">
+          <div className=" flex justify-center border-b border-b-[#DBDDE1] p-3 dark:bg-black dark:text-white md:hidden">
+            <button type="button" onClick={() => setIt(!chatSideBarOpen)}>
+              {!chatSideBarOpen ? (
+                <span className=" flex items-center gap-1 ">
+                  <Menu />
+                  Menu
+                </span>
+              ) : (
+                <X />
+              )}
+            </button>
           </div>
-        </Chat>
-      </div>
+          <ChatSideBar
+            user={user}
+            show={isLargeScreen || chatSideBarOpen}
+            onClose={handleSideBarOnClose}
+          ></ChatSideBar>
+
+          <div
+            className={` w-full
+              ${!chatSideBarOpen || isLargeScreen ? "block" : "hidden"}`}
+          >
+            <Channel>
+              <Window hideOnThread={!isLargeScreen}>
+                <ChannelHeader />
+
+                <MessageList />
+                <div className="  sticky bottom-0">
+                  <MessageInput />
+                </div>
+              </Window>
+
+              <Thread />
+            </Channel>
+          </div>
+        </div>
+      </Chat>
     </div>
   );
 }

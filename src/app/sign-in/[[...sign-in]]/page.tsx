@@ -8,6 +8,7 @@ export default function SignInPage() {
     <div className=" flex h-screen items-center justify-center bg-gray-400">
       <ClerkLoading>
         <ArrowDownLeftFromCircleIcon size={35}></ArrowDownLeftFromCircleIcon>
+        Clerk is loading...
       </ClerkLoading>
       <ClerkLoaded>
         <SignIn

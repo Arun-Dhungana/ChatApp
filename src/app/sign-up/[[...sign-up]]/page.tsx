@@ -4,9 +4,7 @@ import { ClerkLoading } from "@clerk/nextjs";
 export default function SignInPage() {
   return (
     <div className=" flex h-screen items-center justify-center bg-gray-400">
-      <ClerkLoading>
-        
-      </ClerkLoading>
+      <ClerkLoading>Clerk is loading...</ClerkLoading>
       <ClerkLoaded>
         <SignUp
           appearance={{
