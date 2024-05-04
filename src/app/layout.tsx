@@ -4,16 +4,13 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import ThemeProvider from "./ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
-
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 export const metadata: Metadata = {
+  metadataBase: new URL(defaultUrl),
   title: "ChatApp",
   description: "Live chat made using streak and clerk.",
-
-  openGraph: {
-    images: {
-      url: "/opengraph-image.jpg",
-    },
-  },
 };
 
 export default function RootLayout({
